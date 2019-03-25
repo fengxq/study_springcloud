@@ -8,7 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 @SpringBootApplication
-@EnableEurekaClient//表明自己属于一个生产者
+@EnableEurekaClient//使用该注解将注册服务到eureka
 @MapperScan("fz.fxq.user.mapper")
 public class UserApplication {
     static Logger logger = LoggerFactory.getLogger(UserApplication.class);
