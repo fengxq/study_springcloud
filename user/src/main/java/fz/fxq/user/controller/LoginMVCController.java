@@ -14,7 +14,6 @@ public class LoginMVCController {
     @GetMapping("login1")
     public String loginJSP() {
 
-        System.out.println("000000000000000000000000000000000000000000");
         return "login";
     }
 
@@ -36,7 +35,7 @@ public class LoginMVCController {
 
     @GetMapping("login4")
     public ModelAndView login4() {
-        ModelAndView mav = new ModelAndView("login4");
+        ModelAndView mav = new ModelAndView("login/login4");
 
         LoginResultVO loginResultVO = new LoginResultVO();
         loginResultVO.setCode(1);
