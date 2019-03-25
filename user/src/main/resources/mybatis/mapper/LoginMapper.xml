@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="fz.fxq.user.mapper.LoginMapper">
+    <select id="getUserPOList" parameterType="string" resultType="fz.fxq.user.po.UserPO">
+        select t.id userId,t.cust_name userName from customer_info t
+    </select>
+
+    <select id="getUserPO" parameterType="string" resultType="fz.fxq.user.po.UserPO">
+        select t.id userId,t.cust_name userName from customer_info t where t.id = #{userId}
+    </select>
+</mapper>
