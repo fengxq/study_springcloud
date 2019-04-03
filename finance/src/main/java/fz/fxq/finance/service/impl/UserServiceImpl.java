@@ -16,7 +16,7 @@ public class UserServiceImpl implements UserService {
     RestTemplate balanceTemplate;
 
     @Override
-    @HystrixCommand(fallbackMethod = "doError")
+    @HystrixCommand(fallbackMethod = "getUserInfoError")
     public String getUserInfo(String userId) {
 
         logger.info("[UserController]restTemplate[" + balanceTemplate + "]");
@@ -27,7 +27,8 @@ public class UserServiceImpl implements UserService {
         return obj;
     }
 
-    private String doError(String userId) {
+    private String getUserInfoError(String userId) {
+        logger.error("调用远程服务user-service失败，熔断getUserInfo方法");
         return "user " + userId + " doError";
     }
 
