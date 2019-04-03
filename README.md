@@ -2,10 +2,11 @@
 
 SpringBoot
 SpringCore
-SpringCloud
 SpringMVC
+SpringCloud
 
 MyBatis
+SpringJDBC
 
 Maven
 Git
@@ -22,8 +23,18 @@ Cache
     @Cacheable，@CachePut，@CacheEvict
 @Aspect
 @EnableScheduling @Scheduled
+@LoadBalance
 
 mvn install:install-file -Dfile=D:\ojdbc6\11.2.0\ojdbc6-11.2.0.jar -DgroupId=com.oracle -DartifactId=ojdbc6 -Dversion=11.2.0 -Dpackaging=jar
 
 SpringCloud和SpringBoot针对JSP页面的目录结构是不一样的。Cloud：main\resources\META-INF\resources\WEB-INF。Boot：main\webapp\WEB-INF
 
+Eureka
+Feign
+Ribbon
+Hystrix
+Zuul
+Config
+Config Bus
+Sleuth
+Zipkin

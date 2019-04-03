@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
@@ -14,15 +15,20 @@ public class UserController {
     Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
-    RestTemplate restTemplate;
+    RestTemplate balanceTemplate;
 
-    @GetMapping("getUserInfo")
-    public String getUserInfo() {
-        logger.info("[UserController]restTemplate[" + restTemplate + "]");
+    @GetMapping("getUserInfo/{userId}")
+    public String getUserInfo(@PathVariable String userId) {
+        logger.info("[UserController]restTemplate[" + balanceTemplate + "]");
 
-        Object obj = restTemplate.getForObject("http://user/user/login/restful/submit/redis", String.class);
-        logger.info("obj=" + obj);
+        Object obj = "";
+        try {
+            obj = balanceTemplate.getForObject("http://user-service/userService/user/info/get/" + userId, String.class);
+            logger.info("obj=" + obj);
+        } catch (Exception e) {
+            logger.error("系统异常", e);
+        }
 
-        return "fxq test";
+        return "fxq test " + obj;
     }
 }
