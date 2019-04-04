@@ -1,0 +1,37 @@
+server:
+  port: 8764
+  servlet:
+    context-path: /payService
+
+spring:
+  profiles:
+    active: dev
+  application:
+    name: pay-service
+  cloud:
+    config:
+      uri: http://localhost:8760/configService
+      profile: dev
+      label: master
+      fail-fast: true
+      name: ${spring.application.name}
+      username: user
+      password: fxq
+
+feign:
+  hystrix:
+    enabled: true
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+logging:
+  path: logs
+  file:
+    file: /study_springcloud_pay.log
+    file.max-size: 100MB
+    file.max-history: 10
+  level:
+    root: debug

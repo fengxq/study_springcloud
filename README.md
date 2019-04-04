@@ -32,6 +32,7 @@ SpringCloud和SpringBoot针对JSP页面的目录结构是不一样的。Cloud：
 fallback与fallbackFactory区别，fallback只是出错运行你指定的方法，拿不到错误信息，fallbackFactory可以拿到错误信息。
 调用远程需要借助单独的类和接口，feign是编写一个接口，而ribbon是编写一个类，在这个类中我们就可以通过resttemplate来调
 用远程服务。
+
 Eureka
 Feign
 Ribbon
@@ -41,3 +42,13 @@ Config
 Config Bus
 Sleuth
 Zipkin
+
+Config支持我们使用的请求的参数规则为：
+/ { 应用名 } / { 环境名 } [ / { 分支名 } ]
+/ { 应用名 } - { 环境名 }.yml
+/ { 应用名 } - { 环境名 }.properties
+/ { 分支名 } / { 应用名 } - { 环境名 }.yml
+/ { 分支名 } / { 应用名 } - { 环境名 }.properties
+
+yml和properties文件是一样的原理，且一个项目上要么yml或者properties，二选一的存在。
+bootstrap.yml（bootstrap.properties）先加载 application.yml（application.properties）后加载
