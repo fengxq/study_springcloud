@@ -34,7 +34,7 @@ logging:
     file.max-size: 100MB
     file.max-history: 10
   level:
-    root: debug
+    root: info
 
 config:
   test: test0
