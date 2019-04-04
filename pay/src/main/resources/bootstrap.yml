@@ -35,3 +35,6 @@ logging:
     file.max-history: 10
   level:
     root: debug
+
+config:
+  test: test0

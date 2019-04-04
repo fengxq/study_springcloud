@@ -15,7 +15,6 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @EnableHystrix
 @EnableHystrixDashboard
 @EnableFeignClients
-//@EnableCircuitBreaker
 public class PayApplication {
     static Logger logger = LoggerFactory.getLogger(PayApplication.class);
 
