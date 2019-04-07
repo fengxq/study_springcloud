@@ -12,6 +12,7 @@
         <module name="pay" />
         <module name="study_springcloud" />
         <module name="user" />
+        <module name="zuul" />
       </profile>
     </annotationProcessing>
   </component>
@@ -22,6 +23,7 @@
       <module name="finance" options="-parameters" />
       <module name="pay" options="-parameters" />
       <module name="user" options="-parameters" />
+      <module name="zuul" options="-parameters" />
     </option>
   </component>
 </project>
