@@ -17,6 +17,11 @@ spring:
       name: ${spring.application.name}
       username: user
       password: fxq
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
 
 feign:
   hystrix:
@@ -37,4 +42,4 @@ logging:
     root: info
 
 config:
-  test: test1
+  test: test2
