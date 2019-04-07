@@ -1,0 +1,42 @@
+server:
+  port: 8765
+  servlet:
+    context-path: /zuulService
+
+spring:
+  profiles:
+    active: dev
+  application:
+    name: zuul-service
+  cloud:
+    config:
+      uri: http://localhost:8760/configService
+      profile: dev
+      label: master
+      fail-fast: true
+      name: ${spring.application.name}
+      username: user
+      password: fxq
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+logging:
+  path: logs
+  file:
+    file: /study_springcloud_zuul.log
+    file.max-size: 100MB
+    file.max-history: 10
+  level:
+    root: info
+zuul:
+  routes:
+    user1: #传统路由实现方式  http://localhost:8765/zuulService/zuulRoutes/user1/user/info/get/b
+      path: /zuulRoutes/user1/**
+      url: http://localhost:8762/userService/
+    user2: #面向服务的路由 http://localhost:8765/zuulService/zuulRoutes/user2/userService/user/info/get/b
+      path: /zuulRoutes/user2/**
+      serviceId: user-service
+    user3: #面向服务的路由 http://localhost:8765/zuulService/user-service/userService/user/info/get/b
+      eureka-service: /user-service/**  #将path与serviceId都用服务名开头的配置Zuul已经默认为我们实现，不需要配置eureka-service也可以直接访问。http://localhost:8765/zuulService/pay-service/payService/user/getUserInfo/b
+  ignored-services: pay-service #设置不自动创建该服务的默认路由。禁用所有：'*'
