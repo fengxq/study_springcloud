@@ -3,6 +3,13 @@ server:
   servlet:
     context-path: /payService
 
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+    instance:
+      prefer-ip-address: true
+
 spring:
   profiles:
     active: dev
@@ -10,13 +17,16 @@ spring:
     name: pay-service
   cloud:
     config:
+      #      discovery:
+      #        enabled: true
+      #        service-id: config-service
       uri: http://localhost:8760/configService
-      profile: dev
-      label: master
+      #      profile: dev
+      #      label: master
       fail-fast: true
       name: ${spring.application.name}
-      username: user
-      password: fxq
+  #      username: user
+  #      password: fxq
   rabbitmq:
     host: localhost
     port: 5672
@@ -26,11 +36,6 @@ spring:
 feign:
   hystrix:
     enabled: true
-
-eureka:
-  client:
-    service-url:
-      defaultZone: http://localhost:8761/eureka/
 
 logging:
   path: logs
@@ -42,4 +47,4 @@ logging:
     root: info
 
 config:
-  test: test2
+  test: test11

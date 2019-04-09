@@ -52,3 +52,7 @@ Config支持我们使用的请求的参数规则为：
 
 yml和properties文件是一样的原理，且一个项目上要么yml或者properties，二选一的存在。
 bootstrap.yml（bootstrap.properties）先加载 application.yml（application.properties）后加载
+
+Config服务，git使用远程会自动更新，使用native需要手动重启服务。http://localhost:8760/configService/actuator/bus-refresh
+
+Config服务，客户端通过service-id无法访问服务端，uri可以。

@@ -10,13 +10,16 @@ spring:
     name: zuul-service
   cloud:
     config:
-      uri: http://localhost:8760/configService
+#      uri: http://localhost:8760/configService
       profile: dev
       label: master
       fail-fast: true
       name: ${spring.application.name}
-      username: user
-      password: fxq
+#      username: user
+#      password: fxq
+      discovery:
+        enabled: true
+        service-id: config-service
 eureka:
   client:
     service-url:
