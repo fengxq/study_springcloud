@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+
+    <script type="text/javascript">
+        $(function() {
+            $("#userListQuery").click(function () {
+                $.post("list/query", {}, function (data) {
+                    var jsonData = eval(data);
+                    for(var i=0;i<jsonData.length;i++){
+                        $("#userListDiv").append("userId："+jsonData[i].userId);
+                        $("#userListDiv").append("userName："+jsonData[i].userName);
+                    }
+                });
+            });
+
+            $("#userFinanceQuery").click(function () {
+                $.post("finance/balance", {}, function (data) {
+                    alert("data"+data);
+                });
+            });
+
+            $("#userPayQuery").click(function () {
+                $.post("pay/result", {}, function (data) {
+                    alert("data"+data);
+                });
+            });
+        });
+
+    </script>
+</head>
+<body>
+<h1>用户列表</h1>
+<div id="userListDiv"></div>
+<input type="button" id="userListQuery" value="查询用户列表" />
+<input type="button" id="userFinanceQuery" value="查询用户资金" />
+<input type="button" id="userPayQuery" value="查询支付结果" />
+</body>
+</html>

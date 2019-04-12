@@ -6,9 +6,15 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.cloud.netflix.hystrix.EnableHystrix;
+import org.springframework.cloud.netflix.hystrix.dashboard.EnableHystrixDashboard;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
-@EnableEurekaClient//使用该注解将注册服务到eureka
+@EnableEurekaClient
+@EnableHystrix
+@EnableHystrixDashboard
+@EnableFeignClients
 @MapperScan("fz.fxq.user.mapper")
 public class UserApplication {
     static Logger logger = LoggerFactory.getLogger(UserApplication.class);

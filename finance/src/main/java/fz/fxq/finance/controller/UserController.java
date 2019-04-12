@@ -17,17 +17,23 @@ public class UserController {
     @Autowired
     UserService userService;
 
-    @GetMapping("getUserInfo/{userId}")
-    public String getUserInfo(@PathVariable String userId) {
+    @GetMapping("balance/{userId}")
+    public String getUserBalance(@PathVariable String userId) {
+
+        return this.getClass() + " Balance=0.0 userId[" + userId + "]";
+    }
+
+    @GetMapping("pay/result/{userId}")
+    public String getUserPayResult(@PathVariable String userId) {
 
         Object obj = "";
         try {
-            obj = userService.getUserInfo(userId);
+            obj = userService.getUserPayResult(userId);
         } catch (Exception e) {
             logger.error("系统异常", e);
         }
 
-        return "fxq test " + obj;
+        return this.getClass() + " userId[" + userId + "] Result[" + obj + "]";
     }
 
 }

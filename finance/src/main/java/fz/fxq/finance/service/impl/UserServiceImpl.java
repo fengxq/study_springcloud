@@ -16,20 +16,19 @@ public class UserServiceImpl implements UserService {
     RestTemplate balanceTemplate;
 
     @Override
-    @HystrixCommand(fallbackMethod = "getUserInfoError")
-    public String getUserInfo(String userId) {
+    @HystrixCommand(fallbackMethod = "getUserPayResultError")
+    public String getUserPayResult(String userId) {
+        logger.info("restTemplate[" + balanceTemplate + "]");
 
-        logger.info("[UserController]restTemplate[" + balanceTemplate + "]");
-
-        String obj = balanceTemplate.getForObject("http://user-service/userService/user/info/get/" + userId, String.class);
+        String obj = balanceTemplate.getForObject("http://pay-service/payService/user/pay/result/" + userId, String.class);
         logger.info("obj=" + obj);
 
         return obj;
     }
 
-    private String getUserInfoError(String userId) {
-        logger.error("调用远程服务user-service失败，熔断getUserInfo方法");
-        return "user " + userId + " doError";
+    private String getUserPayResultError(String userId) {
+        logger.error("调用远程服务pay-service失败，熔断getUserInfo方法");
+        return "[fallback][getUserPayResult] userId[" + userId + "]";
     }
 
 }

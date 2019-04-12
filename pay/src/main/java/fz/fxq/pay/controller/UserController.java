@@ -33,7 +33,12 @@ public class UserController {
             logger.error("系统异常", e);
         }
 
-        return "fxq test " + obj;
+        return this.getClass() + "fxq test " + obj;
+    }
+
+    @GetMapping("pay/result/{userId}")
+    public String getUserPayResult(@PathVariable String userId) {
+        return this.getClass() + " Result=1 userId[" + userId + "]";
     }
 
     @GetMapping("testConfig")

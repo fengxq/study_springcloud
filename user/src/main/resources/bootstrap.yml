@@ -1,0 +1,70 @@
+server:
+  port: 8762
+  servlet:
+    context-path: /userService
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+spring:
+  application:
+    name: user-service
+  datasource:
+    url: jdbc:oracle:thin:@172.16.1.15:1521:test
+    username: rzzl
+    password: rzzl
+  mvc:
+    static-path-pattern: /static/**
+    view:
+      prefix: /WEB-INF/views/
+      suffix: .jsp
+  redis:
+    database: 0
+    host: 47.104.248.191
+    lettuce:
+      pool:
+        max-active: 8
+        max-idle: 8
+        max-wait: -1
+        min-idle: 0
+    password: ''
+    port: 6379
+  cloud:
+    config:
+      #      discovery:
+      #        enabled: true
+      #        service-id: config-service
+      uri: http://localhost:8760/configService
+      #      profile: dev
+      #      label: master
+      fail-fast: true
+      name: ${spring.application.name}
+    #      username: user
+    #      password: fxq
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+feign:
+  hystrix:
+    enabled: true
+
+logging:
+  file: logs/study_springcloud_user.log
+  file.max-history: 10
+  file.max-size: 100MB
+  level:
+    fz:
+      fxq:
+        user:
+          dao: debug
+          mapper: debug
+    org:
+      mybatis: debug
+    root: info
+  path: logs
+mybatis:
+  mapper-locations: classpath:mybatis/mapper/*.xml

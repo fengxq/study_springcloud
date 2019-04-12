@@ -9,7 +9,6 @@ import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,12 +19,6 @@ import org.springframework.web.bind.annotation.RestController;
 @Api("用户登录")
 public class LoginRestfulController {
     Logger logger = LoggerFactory.getLogger(this.getClass());
-
-    /**
-     * 登录次数
-     */
-    @Value("${loginTimes}")
-    private String loginTimes;
 
     @Autowired
     LoginService loginService;
@@ -43,8 +36,6 @@ public class LoginRestfulController {
         loginResultVO.setCode(0);
         loginResultVO.setMsg("success");
 
-
-        logger.info("loginTimes[" + loginTimes + "]");
         logger.info("loginPropertiesVO.loginTimes[" + loginPropertiesVO.getLoginTimes() + "]");
 
         return loginResultVO;

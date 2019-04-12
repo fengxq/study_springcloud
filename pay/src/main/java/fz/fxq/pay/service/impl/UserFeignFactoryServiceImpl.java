@@ -17,7 +17,7 @@ public class UserFeignFactoryServiceImpl implements FallbackFactory<UserFeignSer
             @Override
             public String getUserInfo(String userId) {
                 logger.error("调用远程服务user-service失败，熔断getUserInfo方法");
-                return "user " + userId + " doError";
+                return "[fallback][getUserInfo] userId[" + userId + "]";
             }
         };
     }
