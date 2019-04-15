@@ -73,3 +73,8 @@ commodity:
   service:
     enabled: true
     config: abc-def,123-456
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
