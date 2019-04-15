@@ -68,3 +68,8 @@ logging:
   path: logs
 mybatis:
   mapper-locations: classpath:mybatis/mapper/*.xml
+
+commodity:
+  service:
+    enabled: true
+    config: abc-def,123-456

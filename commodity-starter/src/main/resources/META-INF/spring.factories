@@ -1,0 +1,2 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+fz.fxq.commoditystarter.config.StarterAutoConfigure
