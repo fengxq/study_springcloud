@@ -14,11 +14,11 @@ spring:
     url: jdbc:oracle:thin:@172.16.1.15:1521:test
     username: rzzl
     password: rzzl
-  mvc:
-    static-path-pattern: /static/**
-    view:
-      prefix: /WEB-INF/views/
-      suffix: .jsp
+#  mvc:
+#    static-path-pattern: /static/**
+#    view:
+#      prefix: /WEB-INF/views/
+#      suffix: .jsp
   redis:
     database: 0
     host: 47.104.248.191
@@ -73,8 +73,3 @@ commodity:
   service:
     enabled: true
     config: abc-def,123-456
-management:
-  endpoints:
-    web:
-      exposure:
-        include: '*'

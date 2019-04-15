@@ -1,4 +1,4 @@
-package fz.fxq.user;
+package fz.fxq.user.config;
 
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.ApiInfoBuilder;
