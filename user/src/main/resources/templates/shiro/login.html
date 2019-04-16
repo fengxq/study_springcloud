@@ -14,24 +14,15 @@
                     alert("result=" + result)
                 });
             });
-
-            $("#login2").click(function () {
-                var userName = $("#userName").val();
-                var userPassword = $("#userPassword").val();
-                $.post("login2", {"userName": userName, "userPassword": userPassword}, function (result) {
-                    alert("result=" + result)
-                });
-            });
         });
     </script>
 </head>
 <body>
 login
-用户名：<input type="text" id="userName"/>
+用户名：<input type="text" id="userName" value="fxqtest" />
 <br/>
-密码：<input type="text" id="userPassword"/>
+密码：<input type="text" id="userPassword" value="123" />
 <br/>
 <input type="button" id="login" value="登录"/>
-<input type="button" id="login2" value="登录2"/>
 </body>
 </html>

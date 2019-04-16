@@ -6,11 +6,7 @@ import org.apache.shiro.subject.Subject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
-
-import javax.servlet.http.HttpServletRequest;
-import java.util.Map;
 
 @Controller
 @RequestMapping("login")
@@ -33,30 +29,6 @@ public class LoginController {
     }
 
     @PostMapping("shiro/login")
-    public String loginShiro(HttpServletRequest request, Map<String, Object> map) {
-        //shiro异常类的全类名
-        String shiroLoginFailure = (String) request.getAttribute("shiroLoginFailure");
-        logger.info("shiroLoginFailure[" + shiroLoginFailure + "]");
-        String loginMessage = "";
-
-        if (!StringUtils.isEmpty(shiroLoginFailure)) {
-            if (UnknownAccountException.class.getName().equals(shiroLoginFailure)) {
-                loginMessage = "账号不存在：";
-            } else if (IncorrectCredentialsException.class.getName().equals(shiroLoginFailure)) {
-                loginMessage = "密码不正确：";
-            } else if ("kaptchaValidateFailed".equals(shiroLoginFailure)) {
-                loginMessage = "验证码错误";
-            } else {
-                loginMessage = "其他异常shiroLoginFailure[" + shiroLoginFailure + "]";
-            }
-        }
-
-        map.put("loginMessage", loginMessage);
-        logger.info("loginMessage[" + loginMessage + "]");
-        return "shiro/index";
-    }
-
-    @PostMapping("shiro/login2")
     @ResponseBody
     public String loginShiro(@RequestParam String userName, @RequestParam String userPassword) {
         logger.info("loginShiro,userName[" + userName + "]userPassword[" + userPassword + "]");
@@ -66,9 +38,9 @@ public class LoginController {
             UsernamePasswordToken usernamePasswordToken = new UsernamePasswordToken(userName, userPassword);
             subject.login(usernamePasswordToken);
         } catch (UnknownAccountException e) {
-            loginMessage = "UnknownAccountException";
+            loginMessage = "账号不存在";
         } catch (IncorrectCredentialsException e) {
-            loginMessage = "IncorrectCredentialsException";
+            loginMessage = "密码不正确";
         } catch (LockedAccountException e) {
             loginMessage = "LockedAccountException";
         } catch (AuthenticationException e) {
