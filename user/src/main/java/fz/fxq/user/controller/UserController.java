@@ -1,6 +1,7 @@
 package fz.fxq.user.controller;
 
 import fz.fxq.user.feignService.FinanceFeignService;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,7 @@ public class UserController {
 
     @RequestMapping("list/query")
     @ResponseBody
+    @RequiresPermissions("user:restful:list:query")
     public List<Map<String, String>> getUserList() {
         List<Map<String, String>> userList = new ArrayList<>();
         userList.add(new HashMap<String, String>() {
@@ -48,6 +50,7 @@ public class UserController {
 
     @RequestMapping("finance/balance")
     @ResponseBody
+    @RequiresPermissions("user:restful:finance:balance")
     public String getUserFinanceBalance() {
         String result = financeFeignService.getUserBalance("userId");
         return result;
