@@ -33,19 +33,11 @@ public class LoginController {
     public String loginShiro(@RequestParam String userName, @RequestParam String userPassword) {
         logger.info("loginShiro,userName[" + userName + "]userPassword[" + userPassword + "]");
         String loginMessage = "success";
-        try {
-            Subject subject = SecurityUtils.getSubject();
-            UsernamePasswordToken usernamePasswordToken = new UsernamePasswordToken(userName, userPassword);
-            subject.login(usernamePasswordToken);
-        } catch (UnknownAccountException e) {
-            loginMessage = "账号不存在";
-        } catch (IncorrectCredentialsException e) {
-            loginMessage = "密码不正确";
-        } catch (LockedAccountException e) {
-            loginMessage = "LockedAccountException";
-        } catch (AuthenticationException e) {
-            loginMessage = "AuthenticationException";
-        }
+
+        Subject subject = SecurityUtils.getSubject();
+        UsernamePasswordToken usernamePasswordToken = new UsernamePasswordToken(userName, userPassword);
+        subject.login(usernamePasswordToken);
+
         logger.info("loginMessage[" + loginMessage + "]");
         return loginMessage;
     }

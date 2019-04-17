@@ -60,7 +60,7 @@ public class ShiroRealm extends AuthorizingRealm {
         String userName = usernamePasswordToken.getUsername();
         logger.info("doGetAuthenticationInfo......userName[" + userName + "]");
 
-        if(!"fxqtest".equals(userName)){
+        if (!"fxqtest".equals(userName)) {
             throw new UnknownAccountException("账号不存在");
         }
 
