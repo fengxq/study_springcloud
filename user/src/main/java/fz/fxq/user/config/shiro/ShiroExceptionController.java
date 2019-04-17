@@ -1,4 +1,4 @@
-package fz.fxq.user.exception;
+package fz.fxq.user.config.shiro;
 
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.IncorrectCredentialsException;
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 @RestControllerAdvice
-public class ExceptionController {
+public class ShiroExceptionController {
     Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @ExceptionHandler(AuthenticationException.class)
