@@ -5,6 +5,8 @@ SpringCore
 SpringMVC
 SpringCloud
 
+Shiro
+
 MyBatis
 SpringJDBC
 
@@ -12,6 +14,7 @@ Maven
 Git
 
 Redis
+MySQL
 Oracle
 
 Transaction
@@ -55,10 +58,10 @@ bootstrap.yml（bootstrap.properties）先加载 application.yml（application.p
 
 Config服务，git使用远程会自动更新，使用native需要手动重启服务。http://localhost:8760/configService/actuator/bus-refresh
 
-Config服务，客户端通过service-id无法访问服务端，uri可以。
+问题：Config服务，客户端通过service-id无法访问服务端，uri可以。
 
 zuul自动创建服务的默认路由http://localhost:8765/zuulService/user-service/userService/*
 
-JSP与Thymeleaf的html共存，会有问题。
+问题：JSP与Thymeleaf的html共存，只有html生效。
 
 swagger2.2.2 与 spring cloud feign有冲突 ，换成swagger 2.7.0后可解决
