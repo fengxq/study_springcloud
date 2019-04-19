@@ -1,5 +1,7 @@
 package fz.fxq.user.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,6 +13,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @Controller
 @RequestMapping("file")
 public class FileUploadController {
+    Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @GetMapping("upload.html")
     public String upload() {
@@ -33,7 +36,7 @@ public class FileUploadController {
         try {
             redirectAttributes.addFlashAttribute("message", "OriginalFilename[" + file.getOriginalFilename() + "]length[" + file.getBytes().length + "]");
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error("文件上传，系统异常：", e);
         }
 
         return "redirect:fileUploadResult.html";

@@ -1,5 +1,7 @@
 package fz.fxq.user.config;
 
+import fz.fxq.user.filter.MyFilter;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.client.ClientHttpRequestFactory;
@@ -20,5 +22,16 @@ public class ConfigApplication {
         factory.setReadTimeout(5000);//单位为ms
         factory.setConnectTimeout(3000);//单位为ms
         return factory;
+    }
+
+    @Bean
+    public FilterRegistrationBean filterRegistrationBean() {
+        FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean();
+        filterRegistrationBean.setFilter(new MyFilter());
+        filterRegistrationBean.addUrlPatterns("/*");
+        filterRegistrationBean.addInitParameter("testKey", "testValue");
+        filterRegistrationBean.setName("myFilter");
+        filterRegistrationBean.setOrder(1);
+        return filterRegistrationBean;
     }
 }
