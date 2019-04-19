@@ -2,15 +2,13 @@ package fz.fxq.user.task;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Component;
 
 /**
  * cron表达式详解
  */
-@Configuration
-@EnableScheduling
+@Component
 public class TestTask {
     Logger logger = LoggerFactory.getLogger(this.getClass());
 
