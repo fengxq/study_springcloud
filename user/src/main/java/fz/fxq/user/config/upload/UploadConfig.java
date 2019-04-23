@@ -1,4 +1,4 @@
-package fz.fxq.user.config;
+package fz.fxq.user.config.upload;
 
 import org.apache.coyote.http11.AbstractHttp11Protocol;
 import org.springframework.boot.web.embedded.tomcat.TomcatConnectorCustomizer;
