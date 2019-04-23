@@ -1,17 +1,21 @@
 package fz.fxq.finance.service.impl;
 
+import fz.fxq.finance.dao.UserBalanceDAO;
+import fz.fxq.finance.po.UserBalance;
 import fz.fxq.finance.service.UserBalanceService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class UserBalanceServiceImpl implements UserBalanceService {
-    @Override
-    public int updateBalance() {
-        return 0;
-    }
+    @Autowired
+    UserBalanceDAO userBalanceDAO;
 
     @Override
-    public int addFundFlow() {
-        return 0;
+    public List<UserBalance> getUserBalanceList() {
+        return userBalanceDAO.findAll();
     }
+
 }

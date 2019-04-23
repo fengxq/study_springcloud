@@ -1,13 +1,10 @@
 package fz.fxq.finance.po;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Table
 public class UserBalance {
-
     @Id
     @GeneratedValue
     private long id;

@@ -18,8 +18,11 @@ spring:
     password: 1qaz!QAZ
   jpa:
     show-sql: true
+    hibernate:
+      ddl-auto: update
   thymeleaf:
     cache: false
+
 
 logging:
   path: logs

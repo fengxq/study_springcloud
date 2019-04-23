@@ -1,7 +1,9 @@
 package fz.fxq.finance.service;
 
-public interface UserBalanceService {
-    public int updateBalance();
+import fz.fxq.finance.po.UserBalance;
 
-    public int addFundFlow();
+import java.util.List;
+
+public interface UserBalanceService {
+    public List<UserBalance> getUserBalanceList();
 }

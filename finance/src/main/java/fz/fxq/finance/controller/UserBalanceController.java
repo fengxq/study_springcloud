@@ -1,6 +1,8 @@
 package fz.fxq.finance.controller;
 
 import fz.fxq.finance.po.UserBalance;
+import fz.fxq.finance.service.UserBalanceService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,6 +15,9 @@ import java.util.List;
 @Controller()
 @RequestMapping("balance")
 public class UserBalanceController {
+    @Autowired
+    UserBalanceService userBalanceService;
+
     List<UserBalance> userBalanceList = new ArrayList<>();
 
     public UserBalanceController() {
@@ -30,6 +35,7 @@ public class UserBalanceController {
 
     @PostMapping("userBalance")
     public String userBalance(Model model) {
+        userBalanceList = userBalanceService.getUserBalanceList();
         model.addAttribute("userBalanceList", userBalanceList);
         return "balance/userBalanceList";
     }
