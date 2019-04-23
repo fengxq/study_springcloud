@@ -1,0 +1,37 @@
+server:
+  port: 8763
+  servlet:
+    context-path: /financeService
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+spring:
+  application:
+    name: finance-service
+  datasource:
+    url: jdbc:mysql://47.104.248.191:3306/myc?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC&useSSL=true
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 1qaz!QAZ
+  jpa:
+    show-sql: true
+  thymeleaf:
+    cache: false
+
+logging:
+  path: logs
+  file: logs/study_springcloud_finance.log
+  file.max-history: 10
+  file.max-size: 100MB
+  level:
+    fz:
+      fxq:
+        user:
+          dao: debug
+          mapper: debug
+    org:
+      mybatis: debug
+    root: info

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Balance</title>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+
+    <script type="text/javascript">
+        $(function () {
+            $("#userBalance").click(function () {
+                $("#frm").attr("action", "userBalance");
+                $("#frm").submit();
+            });
+
+            $("#inMoney").click(function () {
+                $("#frm").attr("action", "inMoney");
+                $("#frm").submit();
+            });
+        });
+
+    </script>
+</head>
+<body>
+<form id="frm" action="" method="post">
+    <table>
+        <tr>
+            <td colspan="3">
+                <input type="button" id="userBalance" value="userBalance"/>
+                <input type="button" id="inMoney" value="inMoney"/>
+            </td>
+        </tr>
+        <tr>
+            <td>idS</td>
+            <td>name</td>
+            <td>balance</td>
+        </tr>
+        <tr th:each="user : ${userBalanceList}">
+            <th scope="row" th:text="${user.id}">1</th>
+            <td th:text="${user.name}">id</td>
+            <td th:text="${user.balance}">id</td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
