@@ -13,15 +13,13 @@ import java.io.IOException;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class CommonApplicationTests {
+public class CommonApplicationTests2 {
     static Logger logger = LoggerFactory.getLogger(CommonApplication.class);
 
     @Test
     public void match() throws IOException {
         String blackPath = "F:\\";
         String blackResult = "F:\\blackResult.txt";
-        String whitePath = "D:\\";
-        String whiteResult = "D:\\whiteResult.txt";
 
         File blackResultFile = new File(blackResult);
         if (blackResultFile.exists()) {
@@ -29,19 +27,12 @@ public class CommonApplicationTests {
         }
         FileWriter blackWriter = new FileWriter(blackResultFile);
         File blackPathFile = new File(blackPath);
-        new MyThread(blackPathFile, blackWriter, "black").start();
+        readFile(blackPathFile, blackWriter);
 
-        logger.info("black match end ......");
+        long start = System.currentTimeMillis();
+        long end = System.currentTimeMillis();
+        logger.info((end - start) + "[" + CommonApplicationTests2.class + "]");
 
-        File whiteResultFile = new File(whiteResult);
-        if (whiteResultFile.exists()) {
-            whiteResultFile.delete();
-        }
-        FileWriter whiteWriter = new FileWriter(whiteResultFile);
-        File whitePathFile = new File(whitePath);
-        new MyThread(whitePathFile, whiteWriter, "white").start();
-
-        logger.info("white match end ......");
     }
 
     public void readFile(File file, FileWriter fileWriter) {
@@ -61,30 +52,5 @@ public class CommonApplicationTests {
         }
     }
 
-    class MyThread extends Thread {
-        File file;
-        FileWriter fileWriter;
-        String threadName;
-
-        public MyThread(File file, FileWriter fileWriter, String threadName) {
-            this.file = file;
-            this.fileWriter = fileWriter;
-            this.threadName = threadName;
-        }
-
-        @Override
-        public void run() {
-            long start = System.currentTimeMillis();
-            readFile(file, fileWriter);
-
-            try {
-                fileWriter.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            long end = System.currentTimeMillis();
-            logger.info((end - start) + "[" + threadName + "]");
-        }
-    }
 
 }
