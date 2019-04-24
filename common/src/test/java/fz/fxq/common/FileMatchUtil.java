@@ -1,41 +1,31 @@
 package fz.fxq.common;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest
-public class CommonApplicationTests3 {
+public class FileMatchUtil {
     static Logger logger = LoggerFactory.getLogger(CommonApplication.class);
 
-    @Test
-    public void match() throws IOException {
-        String whitePath = "D:\\";
-        String whiteResult = "D:\\whiteResult.txt";
+    public static void match(String filePath, String resultPath) throws IOException {
+        long start = System.currentTimeMillis();
 
-
-        File whiteResultFile = new File(whiteResult);
+        File whiteResultFile = new File(resultPath);
         if (whiteResultFile.exists()) {
             whiteResultFile.delete();
         }
         FileWriter whiteWriter = new FileWriter(whiteResultFile);
-        File whitePathFile = new File(whitePath);
+        File whitePathFile = new File(filePath);
         readFile(whitePathFile, whiteWriter);
 
-        long start = System.currentTimeMillis();
         long end = System.currentTimeMillis();
-        logger.info((end - start) + "[" + CommonApplicationTests3.class + "]");
+        logger.info("[" + resultPath + "]耗时" + (end - start));
     }
 
-    public void readFile(File file, FileWriter fileWriter) {
+    public static void readFile(File file, FileWriter fileWriter) {
         try {
             File[] files = file.listFiles();
             if (files == null || files.length <= 0) {
@@ -51,6 +41,4 @@ public class CommonApplicationTests3 {
             logger.error("读取异常：", e);
         }
     }
-
-
 }
