@@ -118,22 +118,51 @@ public class CommonApplicationTests {
 
             FileWriter fileWriterWhite = new FileWriter(whiteFile1);
             for (String key : whiteMap.keySet()) {
-                fileWriterWhite.write("D:\\" + key + "\r\n");
+                fileWriterWhite.write("D" + key + "\r\n");
             }
             fileWriterWhite.close();
 
             File blackFile1 = new File("F:\\blackResult" + i + ".txt");
             FileWriter fileWriterBlack = new FileWriter(blackFile1);
             for (String key : blackMap.keySet()) {
-                fileWriterBlack.write("F:\\" + key + "\r\n");
+                fileWriterBlack.write("F" + key + "\r\n");
             }
             fileWriterBlack.close();
         }
     }
 
     @Test
-    public void test3(){
+    public void test3() throws Exception {
+        File whiteFileR = new File("F:\\whiteResult0.txt");
+        File blackFileR = new File("F:\\blackResult0.txt");
+        copyFile(whiteFileR, "C:\\w");
+        copyFile(blackFileR, "A:\\b");
 
+    }
+
+    public void copyFile(File file, String separator) throws Exception {
+        FileInputStream fileInputStream = new FileInputStream(file);
+        InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream);
+        BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+        String line = "";
+        while ((line = bufferedReader.readLine()) != null) {
+            File oldFile = new File(line);
+            String newFileName = separator + line.substring(1);
+            File newFile = new File(newFileName);
+
+            FileInputStream oldFileInputStream = new FileInputStream(oldFile);
+            FileOutputStream newFileOutputStream = new FileOutputStream(newFile);
+
+            byte[] bytes = new byte[1024];
+            while (oldFileInputStream.read(bytes) != -1) {
+                newFileOutputStream.write(bytes);
+            }
+            oldFileInputStream.close();
+            newFileOutputStream.close();
+        }
+        fileInputStream.close();
+        inputStreamReader.close();
+        bufferedReader.close();
     }
 
     public Map<String, String> read(File file, long beginCount, long endCount) throws Exception {
