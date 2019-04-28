@@ -77,3 +77,13 @@ commodity:
   service:
     enabled: true
     config: abc-def,123-456
+
+management:
+  server:
+    servlet:
+      context-path: /monitor
+    port: 18762
+  endpoints:
+    web:
+      exposure:
+        include: "*" #http://localhost:18762/monitor/actuator/
