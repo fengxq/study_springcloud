@@ -13,19 +13,19 @@ public class MyFilter implements Filter {
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
         String testKey = filterConfig.getInitParameter("testKey");
-        logger.info("init......testKey[" + testKey + "]");
+        logger.info("[MyFilter]init......testKey[" + testKey + "]");
     }
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest httpServletRequest = (HttpServletRequest) servletRequest;
         String requestURI = httpServletRequest.getRequestURI();
-        logger.info("doFilter......requestURI[" + requestURI + "]");
+        logger.info("[MyFilter]doFilter......requestURI[" + requestURI + "]");
         filterChain.doFilter(servletRequest, servletResponse);
     }
 
     @Override
     public void destroy() {
-        logger.info("destroy......");
+        logger.info("[MyFilter]destroy......");
     }
 }
