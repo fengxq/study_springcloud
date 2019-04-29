@@ -1,0 +1,24 @@
+server:
+  port: 8766
+#  servlet:
+#    context-path: /adminService
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+spring:
+  application:
+    name: admin-service
+
+#http://localhost:8766
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS

@@ -1,7 +1,7 @@
 server:
   port: 8762
-  servlet:
-    context-path: /userService
+#  servlet:
+#    context-path: /userService
 eureka:
   client:
     service-url:
@@ -51,6 +51,11 @@ spring:
     multipart:
       max-file-size: 1MB
       max-request-size: 10MB
+#  boot:
+#    admin:
+#      client:
+#        url: http://localhost:8766
+
 
 feign:
   hystrix:
@@ -79,11 +84,14 @@ commodity:
     config: abc-def,123-456
 
 management:
-  server:
-    servlet:
-      context-path: /monitor
-    port: 18762
+#  server:
+#    servlet:
+#      context-path: /monitor  #http://localhost:18762/monitor/actuator/
+#    port: 18762
   endpoints:
     web:
       exposure:
-        include: "*" #http://localhost:18762/monitor/actuator/
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS

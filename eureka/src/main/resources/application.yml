@@ -4,6 +4,7 @@ spring:
   application:
     name: eureka-service
 
+#http://localhost:8761/
 eureka:
   client:
     fetch-registry: false
@@ -22,3 +23,11 @@ logging:
     root: info
   path: logs
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS

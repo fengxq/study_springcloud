@@ -1,5 +1,13 @@
 # study_springboot
 
+8760 config
+8761 eureka
+8762 user
+8763 finance
+8764 pay
+8765 zuul
+8766 admin
+
 SpringBoot
 SpringCore
 SpringMVC
@@ -67,3 +75,5 @@ zuul自动创建服务的默认路由http://localhost:8765/zuulService/user-serv
 swagger2.2.2 与 spring cloud feign有冲突 ，换成swagger 2.7.0后可解决
 
 security: 添加此设置后，actuator/bus-refresh会失败，需要登录。
+
+问题：配置servlet: context-path后，SpringBootAdmin的访问，会缺失需要参数的展示。
