@@ -22,7 +22,13 @@ spring:
       ddl-auto: update
   thymeleaf:
     cache: false
-
+  sleuth:
+    sampler:
+      probability: 1.0
+  zipkin:
+    base-url: http://localhost:8767/
+    sender:
+      type: web
 
 logging:
   path: logs

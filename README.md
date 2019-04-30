@@ -8,6 +8,12 @@
 8765 zuul
 8766 admin
 
+#访问地址
+##http://localhost:8761/    Eureka
+##http://localhost:15672/   RabbitMQ
+##http://localhost:8766/    SpringBootAdmin
+##http://localhost:8767/    Zipkin
+
 SpringBoot
 SpringCore
 SpringMVC

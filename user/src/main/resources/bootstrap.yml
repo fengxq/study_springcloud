@@ -51,10 +51,13 @@ spring:
     multipart:
       max-file-size: 1MB
       max-request-size: 10MB
-#  boot:
-#    admin:
-#      client:
-#        url: http://localhost:8766
+  sleuth:
+    sampler:
+      probability: 1.0
+  zipkin:
+    base-url: http://localhost:8767/
+    sender:
+      type: web
 
 
 feign:
