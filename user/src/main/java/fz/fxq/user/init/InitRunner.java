@@ -1,4 +1,4 @@
-package fz.fxq.user.config;
+package fz.fxq.user.init;
 
 import fz.fxq.user.config.shiro.ShiroConfig;
 import org.slf4j.Logger;
@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
  * 在所有 Spring Beans都初始化之后，SpringApplication.run()之前执行
  */
 @Component
-@Order(1)
+@Order(1) //控制类的加载顺序
 public class InitRunner implements CommandLineRunner {
     Logger logger = LoggerFactory.getLogger(ShiroConfig.class);
 
