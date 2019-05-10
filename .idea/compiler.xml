@@ -10,10 +10,12 @@
         <module name="commodity-starter" />
         <module name="common" />
         <module name="config" />
+        <module name="docker" />
         <module name="eureka" />
         <module name="finance" />
         <module name="pay" />
         <module name="study_springcloud" />
+        <module name="support" />
         <module name="user" />
         <module name="zipkin" />
         <module name="zuul" />
@@ -26,9 +28,11 @@
       <module name="commodity-starter" options="-parameters" />
       <module name="common" options="-parameters" />
       <module name="config" options="-parameters" />
+      <module name="docker" options="-parameters" />
       <module name="eureka" options="-parameters" />
       <module name="finance" options="-parameters" />
       <module name="pay" options="-parameters" />
+      <module name="support" options="-parameters" />
       <module name="user" options="-parameters" />
       <module name="zipkin" options="-parameters" />
       <module name="zuul" options="-parameters" />
