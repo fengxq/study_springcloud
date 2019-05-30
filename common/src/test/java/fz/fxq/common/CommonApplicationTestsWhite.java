@@ -12,7 +12,7 @@ import java.io.IOException;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class CommonApplicationTestsWhite {
-    static Logger logger = LoggerFactory.getLogger(CommonApplication.class);
+    static Logger logger = LoggerFactory.getLogger(CommonApplicationTestsWhite.class);
 
     @Test
     public void matchWhite() throws IOException {

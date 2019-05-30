@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
  */
 @Component
 public class AccessFilter extends ZuulFilter {
-    Logger logger = LoggerFactory.getLogger(ZuulApplication.class);
+    Logger logger = LoggerFactory.getLogger(AccessFilter.class);
 
     /**
      * 过滤器类型选择：

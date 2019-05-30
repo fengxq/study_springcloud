@@ -1,6 +1,5 @@
 package fz.fxq.user.init;
 
-import fz.fxq.user.config.shiro.ShiroConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -13,7 +12,7 @@ import org.springframework.stereotype.Component;
 @Component
 @Order(1) //控制类的加载顺序
 public class InitRunner implements CommandLineRunner {
-    Logger logger = LoggerFactory.getLogger(ShiroConfig.class);
+    Logger logger = LoggerFactory.getLogger(InitRunner.class);
 
     @Override
     public void run(String... args) throws Exception {

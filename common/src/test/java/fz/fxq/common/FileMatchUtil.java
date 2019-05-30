@@ -8,7 +8,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class FileMatchUtil {
-    static Logger logger = LoggerFactory.getLogger(CommonApplication.class);
+    static Logger logger = LoggerFactory.getLogger(FileMatchUtil.class);
 
     public static void match(String filePath, String resultPath) throws IOException {
         long start = System.currentTimeMillis();

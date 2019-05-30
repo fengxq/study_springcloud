@@ -1,6 +1,5 @@
 package fz.fxq.user.init;
 
-import fz.fxq.user.config.shiro.ShiroConfig;
 import fz.fxq.user.service.LoginService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,7 +10,7 @@ import javax.annotation.PostConstruct;
 
 @Component
 public class InitPostConstruct {
-    Logger logger = LoggerFactory.getLogger(ShiroConfig.class);
+    Logger logger = LoggerFactory.getLogger(InitPostConstruct.class);
 
     @Autowired
     LoginService loginService;
@@ -22,8 +21,8 @@ public class InitPostConstruct {
 
     @PostConstruct
     private void init() {
-        logger.info("[PostConstruct]Bean注入第二个执行........loginService[" + loginService + "]");
-        logger.info("[PostConstruct]注解PostConstruct第三个执行........");
+        logger.info("[start sequence]PostConstruct,Bean注入第二个执行........loginService[" + loginService + "]");
+        logger.info("[start sequence]PostConstruct,注解PostConstruct第三个执行........");
     }
 
 }
